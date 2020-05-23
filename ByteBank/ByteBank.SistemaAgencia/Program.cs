@@ -13,12 +13,8 @@ namespace ByteBank.SistemaAgencia
   {
     static void Main(string[] args)
     {
-      ContaCorrente c1 = new ContaCorrente(2121, 35847);
-      ContaCorrente c2 = new ContaCorrente(1212, 21598);
-      Console.WriteLine(c1.Agencia);
-      Console.WriteLine(c1.Numero);
-
-
+      // Testes com TimeSpan e Humanize
+      /*
       DateTime dataFimPagamento = new DateTime(2021, 7, 12);
       DateTime dataCorrente = DateTime.Now;
 
@@ -29,6 +25,15 @@ namespace ByteBank.SistemaAgencia
       Console.WriteLine(dataCorrente);
       Console.WriteLine(dataFimPagamento);
       Console.WriteLine(mensagem);
+      */
+
+      string url = "https://www.bytebank.org/cotacao.aspx?moedaorg=0213&moedadest=0349";
+      string Surl = url.Substring(url.IndexOf('?')+1);
+
+      ExtratorArgumentosURL ex = new ExtratorArgumentosURL(url);
+      
+
+      Console.WriteLine(ex.getValor("moedaorg"));
       
     }
 
