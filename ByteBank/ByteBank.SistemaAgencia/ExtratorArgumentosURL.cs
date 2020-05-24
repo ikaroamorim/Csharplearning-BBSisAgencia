@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +20,10 @@ namespace ByteBank.SistemaAgencia
       {
         throw new ArgumentException("O argumento url não pode ser vazio", nameof(url));
       }
+      if (!url.StartsWith("https://www.bytebank.com"))
+      {
+        throw new ArgumentException("O site não é o do banco", nameof(url));
+      }
       else
       {
         URL = url;
@@ -28,10 +33,22 @@ namespace ByteBank.SistemaAgencia
 
     public string getValor(string nomeParametro)
     {
-      int inicParam = _argumentos.IndexOf(nomeParametro) + nomeParametro.Length +1;
-      string resposta = _argumentos.Substring(inicParam);
-      // trim que não funcionou : resposta = resposta.Trim('&');
-      return resposta;
+      string parametros = _argumentos.ToLower();
+      nomeParametro = nomeParametro.ToLower();
+      nomeParametro += "=";
+      int inicParam = parametros.IndexOf(nomeParametro) + nomeParametro.Length;
+      string resposta = parametros.Substring(inicParam);
+      
+      int fimParam = resposta.IndexOf('&');
+      if (fimParam == -1)
+      {
+        return resposta;
+      }
+      else
+      {
+        resposta = resposta.Remove(fimParam);
+        return resposta;
+      }
     }
   }
 }
