@@ -14,11 +14,27 @@ namespace ByteBank.SistemaAgencia
   {
     static void Main(string[] args)
     {
-      foreach (var item in collection)
+      int[] idades = new int[5];
+      ContaCorrente[] contas = new ContaCorrente[3];
+
+      contas[0] = new ContaCorrente(1212, 43497);
+      contas[1] = new ContaCorrente(7812, 46468);
+      contas[2] = new ContaCorrente(1612, 97885);
+
+      for (int i = 0; i < contas.Length; i++)
       {
-
+        Console.WriteLine($"Conta corrente {i} : {contas[i].Agencia} {contas[i].Numero}");
       }
+    }
 
+    static int SomarVarios(params int[] numeros)
+    {
+      int acumulador = 0;
+      foreach (int item in numeros)
+      {
+        acumulador += item;
+      }
+      return acumulador;
     }
 
     static void TestaHumanize()

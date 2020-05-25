@@ -121,7 +121,7 @@ namespace Bytebank
       catch (SaldoInsuficienteException e)
       {
         CounterTransfInvalido++;
-        throw new OperacaoFinanceiraException("Operação não realizada.",e);
+        throw new OperacaoFinanceiraException("Operação não realizada.", e);
       }
       contaDestino.Depositar(valor);
     }
@@ -129,7 +129,17 @@ namespace Bytebank
     public override string ToString()
     {
       //return "Conta\n Agencia: " + Agencia + "\nNúmero: " + Numero + "\nSaldo: " + Saldo;
-      return $"Número {Numero}, Agência {Agencia}, Saldo {Saldo}"
+      return $"Número {Numero}, Agência {Agencia}, Saldo {Saldo}";
+    }
+
+    public override bool Equals(object obj)
+    {
+      ContaCorrente c1 = obj as ContaCorrente;
+      if (c1 == null)
+      {
+        return false;
+      }
+      return c1.Numero == Numero && c1.Agencia == Agencia;
     }
   }
 }
