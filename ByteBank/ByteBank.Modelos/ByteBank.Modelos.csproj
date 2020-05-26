@@ -45,6 +45,7 @@
     <Compile Include="AutenticacaoHelper.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="ContaCorrente.cs" />
+    <Compile Include="Extensoes\ListExtensoes.cs" />
     <Compile Include="Funcionarios\Auxiliar.cs" />
     <Compile Include="Funcionarios\Desenvolvedor.cs" />
     <Compile Include="Funcionarios\Designer.cs" />

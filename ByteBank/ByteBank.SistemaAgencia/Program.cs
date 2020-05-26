@@ -1,4 +1,5 @@
 ﻿using Bytebank;
+using ByteBank.Modelos.Extensoes;
 using Humanizer;
 using System;
 using System.Collections.Generic;
@@ -14,17 +15,32 @@ namespace ByteBank.SistemaAgencia
   {
     static void Main(string[] args)
     {
-      int[] idades = new int[5];
-      ContaCorrente[] contas = new ContaCorrente[3];
+      List<int> idades = new List<int>();
 
-      contas[0] = new ContaCorrente(1212, 43497);
-      contas[1] = new ContaCorrente(7812, 46468);
-      contas[2] = new ContaCorrente(1612, 97885);
+      idades.Add(1);
+      idades.Add(5);
+      idades.Add(14);
+      idades.Add(25);
+      idades.Add(38);
+      idades.Add(61);
 
-      for (int i = 0; i < contas.Length; i++)
+      idades.Remove(25);
+
+      idades.AddRange(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+
+      ListExtensoes.AdicionarVarios(idades, 10, 11, 12, 13);
+      
+      //com método de extensão:
+      idades.AdicionarVarios(14, 15, 16, 17);
+
+      idades.AdicionarVarios<int>(18, 19, 20);
+
+      for (int i = 0; i < idades.Count; i++)
       {
-        Console.WriteLine($"Conta corrente {i} : {contas[i].Agencia} {contas[i].Numero}");
+        Console.WriteLine(idades[i]);
       }
+
+
     }
 
     static int SomarVarios(params int[] numeros)
