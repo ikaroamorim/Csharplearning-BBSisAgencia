@@ -17,7 +17,25 @@ namespace ByteBank.SistemaAgencia
   {
     static void Main(string[] args)
     {
-      var enderecoArquivo = "contas.txt";
+      //var linhas3 = File.ReadAllBytes("contas.txt");
+      //var linhas2 = File.ReadAllText("contas.txt");
+
+      File.WriteAllText("escrevendoComAClasseFile.txt", "Testando File.WriteAllText");
+      
+      var linhas = File.ReadAllLines("contas.txt");
+      Console.WriteLine(linhas.Length);
+
+      foreach (var linha in linhas)
+      {
+        Console.WriteLine(linha);
+      }
+
+
+
+      Console.WriteLine("Digite seu nome");
+      var nome = Console.ReadLine();
+      Console.WriteLine(nome);
+/*      var enderecoArquivo = "contas.txt";
       var caminhoArquivo = "contas.csv";
 
 
@@ -39,9 +57,12 @@ namespace ByteBank.SistemaAgencia
       {
         escritor.Write("456, 78945, 4785.50, Gustavo Santos");
       }
-
-      CriarArquivo();
-      CriarArquivoFlushing();
+*/
+      //CriarArquivo();
+      //CriarArquivoFlushing();
+      //EscritaBinaria();
+      //LeituraBinaria();
+      //UsarStreamEntrada();
       //var linha = leitor.ReadToEnd();
     }
 
